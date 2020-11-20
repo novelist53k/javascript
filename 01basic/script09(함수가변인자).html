@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4><a href="script00.html">script00</a></h4>
+    
+    <script>
+
+        var result = method(1,2,3,4,5,"횡골");
+        console.log(result);
+        
+        // 자바스크립트에서 매개변수는 단순히 인자값이 몇 개인지 알려주고
+        // 쉽게 접근할 수 있도록 이름을 붙여놓은 형태
+        function method(a,b){
+            console.log("함수가 호출됨");
+            console.log(arguments);
+            console.log(arguments.length);
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+            console.log(arguments[3]);
+            console.log(arguments[4]);
+            console.log(arguments[5]);
+
+            return a + b;
+        }
+    </script>
+</body>
+</html>

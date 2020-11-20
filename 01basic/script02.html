@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h4><a href="script00.html">script00</a></h4>
+
+    <script>
+        // var 변수는 동일한 변수명을 사용할 수 있다.
+        // 변수 선언이 일어날 때마다 새로운 변수가 만들어지는 형태로 동작한다.
+
+        var num1 = "10";    // 문자
+        var num2 = '10';    // 자바스크립트는 ""나 ''가 동일하다
+        var num3 = 10;      // 숫자
+
+        num1 = "20";
+        num2 = '20';
+        num3 = "30";        // 실제 변수 타입이 변경되는 게 아니라 같은 이름으로 다시 생성하는 형태다.
+        var num4 = 40;
+        
+        console.log("num1 = " + num1);
+        console.log("num2 = " + num2);
+        console.log("num3 = " + num3);
+        console.log("num4 = " + num4);
+        
+        console.log("num1 + num2 = " + (num1 + num2));
+        console.log("40 + num1 = " + (40 + num1));
+        
+        var result = num1 + num2 + num3 + 100;
+        console.log("result = " + result);
+
+        console.log("---------------------------");
+        
+        // let 변수는 동일한 변수명을 사용할 수 없다. 아래와 같은 오류가 발생한다.
+        // Uncaught SyntaxError: Identifier 'a' has already been declared
+        let a = 1;
+        // let a = 100;
+        
+        console.log("---------------------------");
+
+        // number, string, boolean, undifined, null
+
+        // number
+        var i1 = 10;
+        var i2 = 20;
+        var i3 = i1 + i2;
+        console.log(i3);
+
+        // string
+        var s1 = '문자1';
+        var s2 = "문자2";
+        var s3 = "'안녕'이라고 했다."
+        console.log(s1 + s2 + s3);
+
+        // boolean
+        var b1 = true;
+        var b2 = false;
+        console.log(b1);
+
+        // undifined - 변수를 선언했지만 값을 초기화하지 않았다면 자동으로 저장된다.
+        var un;
+        console.log("u1 = " + un);
+
+        // null - 값은 저장했으나 그 값이 존재하지 않을 때 저장된다.
+        var tag = document.querySelector("li");
+        console.log("tag = " + tag);
+
+        console.log("i1의 타입은 -> " + typeof(i1));
+        console.log("s1의 타입은 -> " + typeof(s1));
+        console.log("b1의 타입은 -> " + typeof(b1));
+        console.log("un의 타입은 -> " + typeof(un));
+        console.log("tag의 타입은 -> " + typeof(tag));
+
+    </script>
+
+</body>
+</html>

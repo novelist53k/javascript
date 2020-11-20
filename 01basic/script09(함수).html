@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4><a href="script00.html">script00</a></h4>
+    
+    <script>
+        // 선언적 함수 vs 익명 함수
+        
+        // func1();    // 호이스팅은 선언적 함수에서만 사용할 수 있다.
+        // func2();
+        // a();     // 변수는 호이스팅 불가
+
+        function func1(){
+            console.log("func1 실행");
+        }
+
+        function func2(){
+            console.log("func2 실행");
+        }
+
+        // 함수 자체를 변수에 저장할 수 있다.
+        // var a = func1(); // func1 함수의 반환 결과를 저장하는 문법이므로 함수를 변수에 저장하려면 ()를 빼야 한다.
+        var a = func1;
+        a();
+        func1();
+
+        // 익명 함수 - 변수에 함수를 저장해서 함수처럼 쓰도록 만든다(호이스팅 불가)
+        var b = function(){
+            console.log("func3 실행");
+        }
+        b();
+
+
+    </script>
+</body>
+</html>
