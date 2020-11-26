@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        window.onload = function() {
+            var add = document.querySelector("#add");
+
+            add.onclick = function() {
+                // 엘리먼트 생성 createElement("태그")
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                var text = document.createTextNode("오우 예");
+                
+                a.href="https://google.com";
+                a.appendChild(text);
+                li.appendChild(a);
+                document.querySelector(".list").appendChild(li);
+
+            }
+
+            var remove = document.querySelector("#remove");
+
+            remove.onclick = function() {
+                var list = document.querySelector(".list");
+                
+                // list.remove();   // 요소를 삭제한다
+
+                // console.dir(list);   // 사용 가능한 속성 출력
+                
+                console.log(list.childNodes);
+
+                // list.removeChild(list.childNodes[0]);    // 공백을 포함해서 element를 자식 요소로 선택
+                list.removeChild(list.children[0]);         // 공백을 제거하고 순수한 element만 자식 요소로 선택
+            }
+        }
+    </script>
+
+    <button type="button" id="add">추가</button>
+    <button type="button" id="remove">삭제</button>
+    <ul class="list">
+
+    </ul>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

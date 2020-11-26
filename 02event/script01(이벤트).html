@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 태그에 직접 이벤트를 붙이는 형태가 인라인 이벤트고 이벤트 안에는 순수한 JS코드가 들어간다. -->
+    <!-- javascript: 는 생략이 가능하다 -->
+    <button onclick="alert('onclick은 클릭시 발생하는 이벤트다')">인라인이벤트</button>
+    <button onclick="check(); function check(){alert('인라인 이벤트')};">인라인이벤트</button>
+    <button onclick="javascript:check2()">인라인이벤트</button>
+
+    <hr>
+    <!-- 여러 태그에 동일한 인라인 이벤트 사용시 -->
+    <button onclick="check3(this)" id="1">a</button>
+    <button onclick="check3(this)" id="2">b</button>
+    <button onclick="check3(this)" id="3">c</button>
+    <button onclick="check3(this)" id="4">d</button>
+    <button onclick="check3(this)" id="5">e</button>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+
+    <script>
+        function check2(){
+            alert("인라인 이벤트");
+        }
+        function check3(a){
+            // console.log("실행됨");
+            // this 문맥은 실행문맥의 자신을 가르키고 .을 통해 태그의 속성들에 접근이 가능하다
+            // 어떤 버튼을 클릭했는지 확인하는데 사용할 수 있다.
+            console.log(a);
+            console.log(a.type);
+            console.log(a.onclick);
+            console.log(a.id);
+
+            // innerHTML은 선택된 태그의 text 요소를 가리킨다
+            console.log(a.innerHTML);
+
+            a.innerHTML = a.id;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id = "content1">
+        <select class="sel1">
+            <option value="img/1.jpg">봄</option>
+            <option value="img/2.jpg">여름</option>
+            <option value="img/3.jpg">가을</option>
+            <option value="img/4.jpg">겨울</option>
+        </select>
+        <button class="btn1">이미지 바꾸기</button><br>
+        <img src="img/1.jpg" width="500px" class="img1">
+    </div>
+
+    <script>
+        var content1 = document.getElementById("content1");
+
+        var btn1 = content1.querySelector(".btn1");
+        var sel1 = content1.querySelector(".sel1");
+        var img1 = content1.querySelector(".img1");
+
+        console.log(btn1);
+        console.log(sel1);
+
+        btn1.onclick = function() {
+            img1.src = sel1.value;
+        }
+    </script>
+
+    <hr>
+
+    <div id="content2">
+        <img src="img/1.jpg" width="500px" class="img2"><br>
+        <select class="sel2">
+            <option value="img/1.jpg">봄</option>
+            <option value="img/2.jpg">여름</option>
+            <option value="img/3.jpg">가을</option>
+            <option value="img/4.jpg">겨울</option>
+        </select>
+    </div>
+
+    <script>
+        var content2 = document.getElementById("content2");
+        var img2 = content2.querySelector(".img2");
+        var sel2 = content2.querySelector(".sel2");
+
+        sel2.onchange = function() {
+            console.log(1);
+            img2.src = sel2.value;
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

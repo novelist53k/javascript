@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4><a href="script00.html">script00</a></h4>
+    
+    <script>
+        // JSON파싱
+        var data = [
+            {id:"kkk12", title:"java", content:"good"},
+            {id:"aaa12", title:"jsp", content:"nice"},
+            {id:"bbb12", title:"js", content:"soso"}
+        ];
+        
+        console.log(typeof data, data);
+        var result = JSON.stringify(data);
+        console.log(typeof result, result);
+
+        var result2 = JSON.parse(result);
+        console.log(typeof result2, result2);
+
+        // var x = {id:"kkk123"};
+        // 문자열을 JSON 형식으로 변경하려면 반드시
+        // key와 value를 각각 ""로 묶어줘야 한다.
+        var result3 = JSON.parse('{"id":"kkk123"}');
+        console.log(result3);
+    </script>
+</body>
+</html>

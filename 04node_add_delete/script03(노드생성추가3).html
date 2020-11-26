@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="addList"></div>
+    <button type="button" id="add">추가</button>
+
+    <script>
+        window.onload = function() {
+            var add = document.getElementById("add");
+
+            var ul = document.createElement("ul");
+            for(var i = 1; i <= 10; ++i){
+                var text = document.createTextNode("리스트" + i);
+                var li = document.createElement("li");
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+            document.getElementById("addList").appendChild(ul);
+        };
+
+        add.onclick = function(){
+            for(var i = 1; i <= 10; ++i){
+                var ul = document.querySelector("#addList ul");
+                console.log(ul);
+                var text = document.createTextNode("리스트추가");
+                var li = document.createElement("li");
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+            document.getElementById("addList").appendChild(ul);            
+        }
+    </script>
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

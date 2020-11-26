@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>할일목록</h2>
+
+    <form class="nameForm">
+        <h3 class="nameTitle"></h3><!-- 숨겨놓을 영역 -->
+        <input type="text" placeholder="이름을 입력하시오">
+        <button type="button">확인</button>
+    </form>
+
+    <form class="toDoForm">
+        <input type="text" placeholder="할 일을 적으시오">
+        <button type="button">확인</button>
+    </form>
+
+    <ul class="toDoList"></ul>
+
+    <script>
+        var nameBtn = document.querySelector(".nameForm button");
+
+        nameBtn.onclick = function() {
+            var nameForm = document.querySelector(".nameForm");
+            var name = nameForm.querySelector("input");
+
+            nameForm.querySelector(".nameTitle").innerHTML = name.value + "님 환영합니다";
+            name.type = "hidden";
+            nameBtn.style.display = "none";
+        }
+
+        var toDoBtn = document.querySelector(".toDoForm button");
+
+        toDoBtn.onclick = function() {
+            var list = document.querySelector(".toDoList");
+            var input = document.querySelector(".toDoForm input");
+
+            var li = document.createElement("li");
+            var str = document.createTextNode(input.value);
+            var btn = document.createElement("button");
+            var btnUp = document.createElement("button");
+            var btnDown = document.createElement("button");
+
+            btn.innerHTML = "X";
+            btn.onclick = function() {
+                this.parentElement.remove();
+            }
+
+            btnUp.innerHTML = "↑";
+            btnUp.onclick = function() {
+                var current = this.parentElement;
+                var previous = current.previousElementSibling;
+
+                if(confirm("이동하시겠습니까?"))
+                    list.insertBefore(current, previous);
+            }
+            
+            btnDown.innerHTML = "↓";
+            btnDown.onclick = function() {
+                var current = this.parentElement;
+                var next = current.nextElementSibling;
+
+                if(confirm("이동하시겠습니까?"))
+                    list.insertBefore(next, current);
+            }
+
+            li.appendChild(str);
+            li.appendChild(btn);
+            li.appendChild(btnUp);
+            li.appendChild(btnDown);
+            list.appendChild(li);
+
+        }
+    </script>
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

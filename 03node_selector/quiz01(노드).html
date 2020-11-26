@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form>
+        좌석
+        <input type="checkbox" name="seat" value="1">1
+        <input type="checkbox" name="seat" value="2">2
+        <input type="checkbox" name="seat" value="3">3
+        <input type="checkbox" name="seat" value="4">4
+        <input type="checkbox" name="seat" value="5">5
+        <input type="checkbox" name="seat" value="6">6
+        <input type="checkbox" name="seat" value="7">7
+        <input type="checkbox" name="seat" value="8">8
+        <br>
+        <button type="button" id="btn">예약</button>
+    </form>
+
+    <script>
+        // 예약 버튼 클릭시 좌석이 최소 1개 이상 체크되어 있지않으면 경고창을 띄워주는 코드 작성
+        // 체크된 값이 있다면 JSON 형태의 배열로 포장
+
+        var btn = document.getElementById("btn");
+        var seat = document.querySelectorAll("input[name='seat']");
+
+        btn.onclick = function() {
+            var bool = true;
+            var arr = new Array();
+            for(var i = 0; i < seat.length; ++i){
+                if(seat[i].checked) {
+                    bool = false;
+                    arr.push(seat[i].value);
+                }
+            }
+            
+            if(bool) {
+                alert("하나 이상 체크해주시기 바랍니다.");
+                return;
+            }
+
+            var data = JSON.stringify({"data" : arr});
+            console.log(data);
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

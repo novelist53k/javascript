@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 버튼을 두 개 만들고 각각 confirm과 location.href를 이용해서 구현 -->
+    
+    <script>
+        window.onload = function(){
+            var naver = document.getElementById("naver");
+            var google = document.getElementById("google");
+
+            naver.addEventListener("click", function(){
+                var bool = confirm("네이버로 이동하시겠습니가?");
+                if(bool){
+                    location.href = "https://www.naver.com/";
+                }
+            });
+
+            google.onclick = function(){
+                var bool = confirm("구글로 이동하시겠습니까?");
+                if(bool) {
+                    location.href = "https://www.google.co.kr/";
+                }
+            }
+        }
+    </script>
+
+    <button id="naver">네이버</button>
+    <button id="google">구글</button>
+</body>
+</html>

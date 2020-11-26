@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 스크립트 코드가 엘리먼트보다 위에 있다면 컴파일 순서상 오류가 발생할 수 있다.
+        // 이를 방지하기 위해 window.onload 이벤트를 활용할 수 있다.
+        // 단, 페이지에서 단 한 번만 사용할 수 있다.
+        window.onload = function(){
+            // 기본 이벤트 - 엘리먼트(태그)를 얻어서 익명함수를 걸어주는 방식
+            var bt = document.getElementById("bt");
+            console.log(bt);
+            bt.onclick = function(){
+                alert("기본이벤트");
+            }
+        }
+
+        
+    </script>
+
+
+    <button type="button" id="bt">id</button>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

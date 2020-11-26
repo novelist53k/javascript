@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4><a href="script00.html">script00</a></h4>
+    
+    <script>
+        // function func1(){
+        //     var a = "함수 안에서 선언된 변수는 지역변수";
+        // }   // a의 지역변수는 여기서 해제된다.
+        // console.log(a);
+
+        function func1(){
+            var a = "함수 안에서 선언된 지역변수";
+            
+            // var result = function(){
+            //     return a;
+            // }
+            // return result;  // 함수 자체를 반환하는 형태
+
+            return function() {
+                return a;
+            }
+        }
+
+        var b = func1();
+        console.log(b);     // 함수 자체를 반환받는다.
+        console.log(b());   // 함수 안에 있는 a의 자원이 해체되지 않는다.
+        // 클로저 - func1() 안의 내부함수가 func1()의 지역변수에 접근할 수 있는 권한을 가지고 있다.
+        // 클로저 상황 - 내부함수가 외부함수에 지역변수값을 바꾸는 상황
+
+        // 클로저를 이용하면 function 내 getter와 setter 함수처럼 사용할 수 있다.
+        function test1(){
+            var a = "private 변수";
+            console.log("a값의 확인", a);
+
+            return function(name){
+                a = name;
+                console.log("a값의 확인", a);
+            }
+        }
+        var setter = test1();
+        setter("바뀜");
+
+    </script>
+</body>
+</html>

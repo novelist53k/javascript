@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        window.onload = function() {
+            var add = document.querySelector("#add");
+
+            add.onclick = function() {
+                // 엘리먼트 생성 createElement("태그")
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                var text = document.createTextNode("오우 예");
+                
+                a.href="https://google.com";
+                a.appendChild(text);
+                li.appendChild(a);
+                document.querySelector(".list").appendChild(li);
+
+            }
+        }
+    </script>
+
+    <button type="button" id="add">추가</button>
+    <ul class="list">
+
+    </ul>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

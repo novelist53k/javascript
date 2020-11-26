@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>노드생성추가</h2>
+
+    <div id="content"></div>
+
+    <script>
+        var content = document.querySelector("#content");
+        content.innerHTML = "<p>와! 중2병!</p>"
+    </script>
+
+    <!-- 응용 -->
+    <div id="inner1"></div>
+    <div id="inner2">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="inner3"></div>
+
+    <button type="button" id="btn1">버튼1</button>
+    <button type="button" id="btn2">버튼2</button>
+    <button type="button" id="btn3">버튼3</button>
+
+    <script>
+        var btn1 = document.getElementById("btn1");
+        
+        btn1.onclick = function() {
+            var inner1 = document.getElementById("inner1");
+            inner1.innerHTML = "<p><span>버튼클릭시 문자 방식으로 element를 추가</span></p>";
+        }
+        
+        var btn2 = document.getElementById("btn2");
+
+        btn2.onclick = function() {
+            var inner2 = document.querySelectorAll("#inner2 > ul > li");
+            for(var i = 0; i < inner2.length; ++i){
+                inner2[i].innerHTML = "글자추가" + (i + 1) + ""
+            }
+        }
+
+        var btn3 = document.getElementById("btn3");
+
+        btn3.onclick = function(){
+            var inner3 = document.getElementById("inner3");
+            var str = "";
+            for(var i = 0; i < 10; ++i){
+                
+                str += "<input type='checkbox' name='add'>";
+            }
+            inner3.innerHTML = str;
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

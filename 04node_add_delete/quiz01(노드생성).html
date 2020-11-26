@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {border-spacing: 0px; border-collapse: collapse;}
+        thead th {border:1px solid black;}
+        tbody td {text-align: center;}
+    </style>
+</head>
+<body>
+    
+    <table id="table">
+        <thead>
+            <th>교시</th>
+            <th>훈련과목</th>
+            <th>담당자</th>
+            <th>훈련내용</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+                <td><input type="text" size="5"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" id="btn-plus1">1개 추가</button>
+    <button type="button" id="btn-plus5">5개 추가</button>
+
+    <script>
+        var btnPlus1 = document.getElementById("btn-plus1");
+        var btnPlus5 = document.getElementById("btn-plus5");
+
+        btnPlus1.onclick = function() {
+            var tr = document.createElement("tr");
+            for(var i = 0; i < 4; ++i) {
+                var td = document.createElement("td");
+                
+                td.innerHTML = "<input type='text'>";
+                if(i == 0)
+                    td.innerHTML = "<input type='text' size='3'>";
+                if(i == 2)
+                    td.innerHTML = "<input type='text' size='5'>";
+                tr.appendChild(td);
+
+            }
+
+            document.querySelector("table tbody").appendChild(tr);
+        }
+
+        btnPlus5.onclick = function() {
+            for(var j = 0; j < 5; ++j){
+                btnPlus1.onclick();
+            }
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        header {text-align:center;}
+        section .js {overflow:hidden; border:1px solid black; padding:5px; width:700px; margin:0 auto;}
+        section .js .box1 {float:left; padding:5px; width:50%; box-sizing: border-box;}
+        section .js .box2 {float:left; padding:5px; width:50%; box-sizing: border-box;}
+        section .js .box2 .content {border:1px solid black; width:100%; height:300px;}
+
+        .box2 content {display:none;};
+    </style>
+</head>
+<body>
+    <header>
+        <h2>style 속성 활용하기</h2>
+        <button class="dark" onclick = "darker()">어둡게보기</button>
+        <button class="name">이름보기</button>
+        <button class="memo">메모장보기</button>
+    </header>
+
+    <hr>
+
+    <section class=''>
+        <div class="js">
+            <div class="box1">
+                <img src="img/1.jpg" width="100%;" height="300px;">
+
+            </div>
+            <div class="box2">
+                <div class="content">
+                    자바스크립트(영어: JavaScript)는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 프로그래밍에도 사용되고 있다
+                    <br>
+                    <a href="https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">위키백과</a>
+                </div>
+                <div class="content2">
+                    홍길자<br>
+                    20세<br>
+                    능력단위<br>
+                    Java, Oracle, JSP, Css<br>
+                    JavaScript
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+
+    <script>
+        var dark = document.querySelector(".dark");
+        var white = document.querySelector(".white");
+
+        function darker() {
+            
+            // dark.class = "white" // class는 예약어이므로 이 형식으로는 바꿀 수 없다.box1
+            dark.innerHTML = "밝게";
+            dark.className = "white";
+            
+            document.querySelector("body").style.backgroundColor = "black";
+            document.querySelector("body").style.color = "white";
+            document.querySelector(".js").style.borderColor = "white";
+            document.querySelector(".js .box2 .content").style.borderColor = "white";
+            
+        }
+
+
+        function brighter() {
+            white.innerHTML = "어둡게";
+            white.className = "dark";
+
+            document.querySelector("body").style.backgroundColor = "white";
+            document.querySelector("body").style.color = "black";
+            document.querySelector(".js").style.borderColor = "black";
+            document.querySelector(".js .box2 .content").style.borderColor = "black";
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- querySelector() - 단일 선택(css 문법)
+         querySelectorAll() - 복수 선택(css 문법)
+    -->
+    
+    <script>
+        window.onload = function(){
+            // querySelector()
+            // var b2 = document.querySelector("#btn1");
+            // console.log(b2);
+
+            var b1 = document.getElementById("btn1");
+            b1.onclick = function() {
+                // css문법으로 선택자를 선택하는데 단일 선택자이므로 하나의 element만 얻는다
+                var list = document.querySelector(".box1 li");
+                console.log(list);
+                list.innerHTML = "곧 버스 올 시간입니다";
+            }
+
+            var b2 = document.getElementById("btn2");
+            b2.onclick = function() {
+                var list = document.querySelectorAll(".box2 li");
+
+                for(var i = 0; i < list.length; ++i){
+                    console.log(list);
+                    console.log(list[i]);
+                    console.log(list[i].innerHTML);
+                    list[i].innerHTML = "와 변경";
+                    // list[i].style = "color:red";
+                    list[i].style.color = "red";
+                }
+
+            }
+        }
+    </script>
+
+    <button type="button" id="btn1">querySelector확인</button>
+    <div>
+        <ul class="box1">
+            <li>안녕</li>
+            <li>헬로</li>
+            <li>니하오</li>
+        </ul>
+    </div>
+
+    <button type="button" id="btn2">querySelectorAll확인</button>
+    <div>
+        <ul class="box2">
+            <li>홍길동</li>
+            <li>홍길자</li>
+            <li>이순신</li>
+        </ul>
+    </div>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>
