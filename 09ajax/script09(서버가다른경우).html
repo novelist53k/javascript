@@ -8,6 +8,30 @@
 <body>
     <h2>jsp에 서블릿으로 데이터를 요청(응답)</h2>
 
-    
+    <button type="button" onclick="ajax()">ajax 요청하기</button>
+
+    <script>
+        function ajax() {
+            // fetch의 두 번째 인자 값에는 비동기통신의 옵션이 들어간다
+            var t = fetch("http://localhost:8181/AJAX/AjaxController", {
+                method: 'POST',
+                mode: 'no-cors', // 서버가 다를시 cross origin을 허용
+                // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                // credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    // 'Content-Type': 'application/json',  // JSON 형식의 전송을 의미한다.
+                    'Content-Type': 'application/x-www-form-urlencoded',    // form 형식의 전송을 의미한다
+                },
+                // redirect: 'follow', // manual, *follow, error
+                // referrer: 'no-referrer', // no-referrer, *client
+                // body: JSON.stringify({"id" : "kkk123"}), // body data type must match "Content-Type" header
+                body: "id=kkk123&name=홍길동", // 폼 형식을 지켜서 문자열로 전송
+            }).then(function(response){
+                return response.text();
+            }).then(function(data){
+                console.log(data);
+            })
+        }
+    </script>
 </body>
 </html>
