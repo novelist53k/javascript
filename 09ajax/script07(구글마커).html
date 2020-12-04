@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #map {
+            height:50%;
+            width:50%;
+            margin:0 auto;
+        }
+        html, body {
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+    </style>
+    <!-- 맵 사이즈 -->
+
+    <!-- 구글맵 SDK 로드 -->
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY6Dq01vAGSL5h4iUfxaK0VylTXC4bgfo&callback=initMap">
+    </script>
+</head>
+<body>
+    <!--
+    서울데이터포털
+    1. API 인증키 받기 - 694c45576374726937395273416261
+    2. 문서를 확인하고 요청인자값을 검토한다. 주소/인증키/데이터타입/서비스명/시작인덱스/끝인덱스/구명(필수아님)으로 구성되어 있다. 문서에 따라 요청인자가 다르다.
+    3. 데이터 처리량 확인(최대 1000건까지)은 주소의 마지막 두 숫자를 보면 된다 ex) 1/1000
+    -->
+
+    <h2>서울시 공공 WIFI 사용가능 지역정보(구를 선택해 주세요)</h2>
+
+    <select class="gu">
+    </select>
+
+    <!-- 맵이 저장될 곳 -->
+    <div id="map"></div>
+    
+    <script>
+        const myLatLng = {lat: "", lng: ""};
+
+        var handleSelect = document.querySelector(".gu");
+        handleSelect.addEventListener("change", function() {
+            getFecth(event.target.value);
+        })
+
+        function getFecth(gu) {
+            fetch("http://openAPI.seoul.go.kr:8088/694c45576374726937395273416261/json/PublicWiFiPlaceInfo/1/1000/" + gu)
+            .then(function(response) {
+                return response.json();
+            }).then(function(jsonData) {
+
+
+                // 지도에 맵을 생성하는 코드
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: myLatLng,
+                });
+
+                // 데이터가 없을시 함수 종료
+                if(jsonData.PublicWiFiPlaceInfo === undefined) {
+                    return;
+                }
+
+                // JSON 데이터 분해
+                var data = jsonData.PublicWiFiPlaceInfo.row;
+                console.log(data);
+
+                // 지도에 마커 정보 추가하기
+                for(var i = 0; i < data.length; ++i) {
+                    var latLng = {lat: data[i].INSTL_Y, lng: data[i].INSTL_X};
+                    const marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map,
+                        title: data[i].PLACE_NAME,
+                    });
+                }
+            })
+            ;
+        }
+
+        // 구 생성구문
+        function createGu() {
+            var gu_list = new Array("도봉구", "강북구", "노원구", "은평구", "마포구",
+                                    "서대문구", "종로구", "중구", "용산구", "성북구",
+                                    "동대문구", "성동구", "중랑구", "광진구", "강서구",
+                                    "양천구", "구로구", "영등포구", "금천구", "동작구",
+                                    "관악구", "서초구", "강남구", "송파구", "강동구");
+            gu_list.sort();
+            gu_list.unshift("선택");
+            
+            var gu = document.querySelector(".gu");
+            for(i in gu_list) {
+                var opt = document.createElement("option");
+                opt.innerHTML = gu_list[i];
+                gu.appendChild(opt);
+            }
+        }
+
+        function coordsSuccess(position) {
+            myLatLng.lat = position.coords.latitude;
+            myLatLng.lng = position.coords.longitude;
+            console.log("내 위치 정보", myLatLng.lat, myLatLng.lng);
+
+            getFecth();
+        }
+
+        function coordsFail() {
+            console.log("위치정보 파악 실패");
+        }
+
+        // 1. 지도 API 시작
+        function initMap() {
+            createGu();
+
+            // 네비게이터 객체를 이용해서 나의 위치정보를 받는 코드(success 함수에서는 위도, 경도만 출력)
+            navigator.geolocation.getCurrentPosition(coordsSuccess, coordsFail);
+
+        };
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

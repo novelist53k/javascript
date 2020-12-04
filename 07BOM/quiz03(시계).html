@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        body {background-image: url(img/img1.jpg);}
+    </style>
+</head>
+<body data-img='{"1":"img/img1.jpg", "2":"img/img2.jpg", "3":"img/img3.jpg","4":"img/img4.jpg"}'>
+    <!-- Object의 길이를 확인하는 문법 검색 -->
+    
+    <img src="" class="bgImg">  <!-- 배경을 넣을 이미지 -->
+
+    <div class="clock">
+        <h3>00:00:00</h3>
+    </div>
+
+    <script>
+        var clock = document.querySelector(".clock h3");
+        
+        (function() {
+            createTime();
+            setInterval(createTime, 1000);
+        })();
+
+        function createTime() {
+            var time = new Date();
+
+            var hour = time.getHours();
+            var minute = time.getMinutes();
+            var second = time.getSeconds();
+            
+            clock.innerHTML = (hour < 10 ? "0" + hour : hour) + ":"
+                            + (minute < 10 ? "0" + minute : minute) + ":"
+                            + (second < 10 ? "0" + second : second);
+        };
+
+        var body = document.querySelector("body");
+
+        var imgList = JSON.parse(body.dataset.img);
+        var key = 0;
+        var length = Object.keys(imgList).length;
+        // var arr = new Array();
+        // var index = 1;
+        // for(var i = 0; i < length; ++i){
+        //     arr[i] = imgList[i+1];
+        // }
+
+        setInterval(function() {
+            body.style.backgroundImage = "url(" + imgList[++key] + ")";
+            if(key == length) key = 0;
+
+            // body.style.backgroundImage = "url(" + arr[index++] + ")";
+            // if(index == arr.length) index = 0;
+        },1000);
+
+
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

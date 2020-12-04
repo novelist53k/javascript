@@ -12,15 +12,15 @@
         section .js .box2 {float:left; padding:5px; width:50%; box-sizing: border-box;}
         section .js .box2 .content {border:1px solid black; width:100%; height:300px;}
 
-        .box2 content {display:none;};
+        .box2 .content2 {border:1px solid black; width:100%; height:300px; display:none;}
     </style>
 </head>
 <body>
     <header>
         <h2>style 속성 활용하기</h2>
-        <button class="dark" onclick = "darker()">어둡게보기</button>
-        <button class="name">이름보기</button>
-        <button class="memo">메모장보기</button>
+        <button id="btn1" class="dark">어둡게보기</button>
+        <button id="btn2" class="name">이름보기</button>
+        <button id="btn3" class="write">메모장보기</button>
     </header>
 
     <hr>
@@ -29,7 +29,6 @@
         <div class="js">
             <div class="box1">
                 <img src="img/1.jpg" width="100%;" height="300px;">
-
             </div>
             <div class="box2">
                 <div class="content">
@@ -52,32 +51,72 @@
     <h4><a href="script00.html">script00</a></h4>
 
     <script>
-        var dark = document.querySelector(".dark");
-        var white = document.querySelector(".white");
+        var btn1 = document.getElementById("btn1");
 
-        function darker() {
-            
-            // dark.class = "white" // class는 예약어이므로 이 형식으로는 바꿀 수 없다.box1
-            dark.innerHTML = "밝게";
-            dark.className = "white";
-            
-            document.querySelector("body").style.backgroundColor = "black";
-            document.querySelector("body").style.color = "white";
-            document.querySelector(".js").style.borderColor = "white";
-            document.querySelector(".js .box2 .content").style.borderColor = "white";
-            
+        btn1.addEventListener("click", shader);
+
+        function shader() {
+            if(btn1.className == "dark"){
+                // dark.class = "white" // class는 예약어이므로 이 형식으로는 바꿀 수 없다.box1
+                btn1.innerHTML = "밝게";
+                btn1.className = "white";
+                
+                document.querySelector("body").style.backgroundColor = "black";
+                document.querySelector("body").style.color = "white";
+                document.querySelector(".js").style.borderColor = "white";
+                document.querySelector(".js .box2 .content").style.borderColor = "white";
+            }
+            else {
+                btn1.innerHTML = "어둡게";
+                btn1.className = "dark";
+
+                document.querySelector("body").style.backgroundColor = "white";
+                document.querySelector("body").style.color = "black";
+                document.querySelector(".js").style.borderColor = "black";
+                document.querySelector(".js .box2 .content").style.borderColor = "black";
+            }
+        }
+        
+        var btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click", nc);
+        
+        function nc() {
+            if(btn2.className == "name"){
+                btn2.innerHTML = "내용보기";
+                btn2.className = "con";
+
+                document.querySelector(".content").style.display = "none";
+                document.querySelector(".content2").style.display = "block";
+            }
+            else {
+                btn2.innerHTML = "이름보기";
+                btn2.className = "name";
+
+                document.querySelector(".content").style.display = "block";
+                document.querySelector(".content2").style.display = "none";
+            }
+        }
+        
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function() {
+
+            if(btn3.className == "write") {
+                var textarea = document.createElement("textarea");
+                var button = document.createElement("button");
+
+                textarea.style.height = "100px;";
+                textarea.style.width = "100%";
+                textarea.style.resize = "vertical";
+                textarea.style.boxSizing = "border-box";
+
+                button.innerHTML = "등록하기";
+
+                var box1 = document.querySelector(".box1");
+                box1.appendChild(textarea);
+                box1.appendChild(button);
+            }
         }
 
-
-        function brighter() {
-            white.innerHTML = "어둡게";
-            white.className = "dark";
-
-            document.querySelector("body").style.backgroundColor = "white";
-            document.querySelector("body").style.color = "black";
-            document.querySelector(".js").style.borderColor = "black";
-            document.querySelector(".js .box2 .content").style.borderColor = "black";
-        }
         
     </script>
 </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        ul, li {list-style:none;}
+        .pageNation li {display: inline-block; border:1px solid black; padding:10px;}
+        li a {text-decoration: none;}
+    </style>
+</head>
+<body>
+    <h2>a, submit 등의 고유태그들의 이벤트 중단, checkbox등의 속성도 중단시킨다.</h2>
+
+    <div>
+        <ul class="pageNation">
+            <li><a href="getList.board">1</a></li>
+            <li><a href="getList.board">2</a></li>
+            <li><a href="getList.board">3</a></li>
+            <li><a href="getList.board">4</a></li>
+            <li><a href="getList.board">5</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var pageNation = document.querySelector(".pageNation");
+        pageNation.onclick = function(){
+            event.preventDefault();
+            if(event.target.tagName !== "A") return;
+            
+            var num = event.target.innerHTML;   // dom조작 코드작성
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

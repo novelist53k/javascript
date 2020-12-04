@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>엘리먼트의 dataset(필요한 데이터를 저장하는 곳)을 사용하는 방법</h2>
+
+    <ul class="nameList">
+        <li><a href="#" data-userInfo='{"id":"1", "age":"20", "name":"홍길동"}'>홍길동</a></li>
+        <li><a href="#" data-userInfo='{"id":"2", "age":"30", "name":"이순신"}'>이순신</a></li>
+        <li><a href="#" data-userInfo='{"id":"3", "age":"40", "name":"홍길자"}'>홍길자</a></li>
+        <li><a href="#" data-userInfo='{"id":"4", "age":"50", "name":"박찬호"}'>박찬호</a></li>
+    </ul>
+
+    <script>
+        var nameList = document.querySelector(".nameList");
+
+        nameList.onclick = function() {
+            event.preventDefault();
+            if(event.target.tagName !== "A") return;
+
+            // 엘리먼트에서 data-이름으로 저장한 속성은 dataset.이름으로 얻어올 수 있다.
+            console.log(event.target.dataset.userinfo);
+            var jsonData = JSON.parse(event.target.dataset.userinfo);
+            console.log(jsonData);
+            console.log("id : " + jsonData.id + ", age : " + JSON.age);
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

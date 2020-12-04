@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /*
+        xml문서를 우리가 이용할 수 있도록 변환하는 과정을 데이터 파싱이라고 한다
+        */
+
+        fetch("data.xml").then(function(response) {
+            return response.text();
+        }).then(function(data) {
+            return new DOMParser().parseFromString(data, "text/xml");
+        }).then(function(data) {
+            console.log(data);  // 데이터 형식
+
+            var result = data.getElementsByTagName("data");
+
+            for(var i = 0; i < result.length; ++i) {
+                console.log(result.item(i).children[0].innerHTML);
+                console.log(result.item(i).children[1].innerHTML);
+                console.log(result.item(i).children[2].innerHTML);
+            }
+        })
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

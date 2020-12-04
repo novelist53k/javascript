@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        .slide img {max-width: 100%; height:auto;}
+        .bgImg {animation: fadein 1s linear}  /* 일정한 속도*/
+
+        @keyframes fadein {
+            from {
+                opacity:0;
+            } to {
+                opacity:1;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="slide">
+        <img src="img/img1.jpg" class="bgImg">
+    </div>
+
+    <script>
+        var arr = ["img/img1.jpg", "img/img2.jpg", "img/img3.jpg", "img/img4.jpg"];
+        var idx = 0;
+
+        function changeImg(){
+            // 이미지 생성
+            var img = document.createElement("img");
+            img.src = arr[++idx];
+            img.className = "bgImg";
+
+            // 기존 이미지 삭제
+            var slide = document.querySelector(".slide");
+            slide.removeChild(slide.querySelector("img"));
+
+            // slide 아래에 이미지 추가
+            slide.appendChild(img);
+
+            if(idx == arr.length -1) idx = -1; ;
+        }
+        (function() {
+            setInterval(changeImg, 2000);
+        })();
+
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

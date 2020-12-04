@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="parent">
+        <li>홍길동</li>
+        <li>이순신</li>
+        <li>홍길자</li>
+        <li>이순자</li>
+        <li>고길동</li>
+    </ul>
+    <div class="result"></div>
+
+    <script>
+        var result = document.querySelector(".result");
+        var parent = document.querySelector(".parent");
+        parent.onclick = function() {
+            // 부모 객체를 클릭해도 이벤트가 적용되는 문제가 있다.
+            console.log(event.currentTarget);   // 실제 이벤트가 걸려있는 부모
+            if(event.target.tagName == "LI"){
+                result.innerHTML = event.target.innerHTML;
+            }
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+
+</body>
+</html>

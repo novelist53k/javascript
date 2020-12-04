@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .images li {display: inline-block;}
+        .images li img {width:100px; height:auto;}
+    </style>
+</head>
+<body>
+
+    <h2>이벤트 속성을 이용</h2>
+
+    <ul class="images">
+        <li><img src="img/1.jpg"></li>
+        <li><img src="img/2.jpg"></li>
+        <li><img src="img/3.jpg"></li>
+        <li><img src="img/4.jpg"></li>
+    </ul>
+
+    결과 :
+    <div class="result">
+        <img src="img/1.jpg" width="400px" height="auto">
+    </div>
+
+    <script>
+        var images = document.querySelector(".images");
+        var img = document.querySelector(".result img");
+
+        images.onclick = function() {
+            if(event.target.tagName !== "IMG") return;
+            img.src = event.target.src; 
+        }
+
+        // var images = document.querySelectorAll('.images li img');  
+        // for(var i = 0; i < images.length; ++i){
+        //     images[i].addEventListener("click", imgChange);
+        // }
+        // function imgChange() {
+        //     if(event.target.tagName !== "IMG") return;
+        //     img.src = event.target.src;
+        // }
+    </script>
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

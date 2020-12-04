@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <!-- 속성변경함수 : setAttribute(), getAttribute(), removeAttribute() -->
+    
+    <h2></h2>
+    <form method="post" name="forms">
+        <input type="hidden" name="num"><br>
+        <input type="text" name="title">
+
+        <input type="button" value="수정" onclick="change(this)">
+        <input type="button" value="추가" onclick="change(this)">
+    </form>
+
+    <script>
+        function change(a) {
+            var handle = a.getAttribute("value");
+            if(handle === "수정"){
+                // form은 document의 자식이므로 document.폼이름으로 접근이 가능하다
+                // doucment.forms.action = "https://www.naver.com/";
+                document.forms.setAttribute("action", "https://www.naver.com/");
+            }
+            else if(handle === "추가"){
+                document.forms.setAttribute("action", "https://www.google.co.kr/")
+            }
+            document.forms.submit();
+        }
+
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

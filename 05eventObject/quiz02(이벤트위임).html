@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <td>번호</td>
+            <td>제목</td>
+            <td>내용</td>
+            <td>삭제</td>
+        </thead>
+        <tbody class="tbody">
+            <tr>
+                <td>1</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var tbody = document.querySelector(".tbody");
+        tbody.onclick = function() {
+            if(event.target.tagName !== "BUTTON") return;
+            
+            event.target.parentElement.parentElement.remove();
+        }
+
+    </script>
+    
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

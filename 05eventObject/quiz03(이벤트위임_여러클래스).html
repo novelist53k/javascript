@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        table {border-spacing: 0; border-collapse: collapse;}
+        th, td {border:1px solid black;}
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <td>번호</td>
+            <td>과정명</td>
+            <td>담당교수</td>
+            <td>관리</td>
+        </thead>
+        <tbody class="test">
+            <tr>
+                <td>1</td>
+                <td>강남응용자바</td>
+                <td>홍길동</td>
+                <td>
+                    <button type="button" class="btn-primary testInfo">시험기본정보</button>
+                    <button type="button" class="btn-danger testInput">시험출제</button>
+                    <button type="button" class="btn-default testResult">시험결과</button>
+                    <button type="button" class="btn-info scoreInfo">성적관리</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>종로응용자바</td>
+                <td>이순신</td>
+                <td>
+                    <button type="button" class="btn-primary testInfo">시험기본정보</button>
+                    <button type="button" class="btn-danger testInput">시험출제</button>
+                    <button type="button" class="btn-default testResult">시험결과</button>
+                    <button type="button" class="btn-info scoreInfo">성적관리</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>종로응용자바</td>
+                <td>박찬순</td>
+                <td>
+                    <button type="button" class="btn-primary testInfo">시험기본정보</button>
+                    <button type="button" class="btn-danger testInput">시험출제</button>
+                    <button type="button" class="btn-default testResult">시험결과</button>
+                    <button type="button" class="btn-info scoreInfo">성적관리</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>종로응용자바</td>
+                <td>김영희</td>
+                <td>
+                    <button type="button" class="btn-primary testInfo">시험기본정보</button>
+                    <button type="button" class="btn-danger testInput">시험출제</button>
+                    <button type="button" class="btn-default testResult">시험결과</button>
+                    <button type="button" class="btn-info scoreInfo">성적관리</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var test = document.querySelector(".test");
+
+        test.onclick = function() {
+            if(event.target.tagName !== "BUTTON") return;
+
+            var list = event.target.classList;
+            console.log(event.target);
+            if(list.contains("testInfo")){
+                console.log("시험기본정보");
+            }
+            else if(list.contains("testInput")){
+                console.log("시험출제");
+            }
+            else if(list.contains("testResult")){
+                console.log("시험결과");
+            }
+            else if(list.contains("scoreInfo")){
+                console.log("성적관리");
+            }
+        }
+    </script>
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

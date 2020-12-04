@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 05eventObject 이전에는 값 변경 후 클릭하는 방식으로 사용 -->
+    <!-- 동일한 형태의 여러 태그에 그 즉시 반영시키는 이벤트 발생 -->
+
+    <ul>
+        <li class="list">홍길동</li>
+        <li class="list">이순신</li>
+        <li class="list">홍길자</li>
+        <li class="list">이순자</li>
+        <li class="list">고길동</li>
+    </ul>
+    <div class="result"></div>
+
+    <script>
+        var result = document.querySelector(".result");
+        var list = document.querySelectorAll(".list");
+        
+        // 이벤트 발생시 이벤트에 대한 정보를 함수의 매개변수로 자동으로 넣어준다.
+        // 매개변수를 통해서 참조하거나 직접 event로 적어서 사용할 수 있다.
+        // list[0].onclick = function() {
+        //     // console.log(event);
+        //     // console.log(event.target);
+        //     result.innerHTML = event.target.innerHTML;
+        // }
+
+
+        // 반복문으로 모든 항목에 이벤트를 걸어주는 코드
+        // li의 개수가 늘어나므로 function의 개수도 늘어나므로 좋은 코드는 아니다
+        for(var i = 0; i < list.length; ++i){
+            list[i].onclick = function() {
+                //result.innerHTML = this.innerHTML;
+                result.innerHTML = event.target.innerHTML;
+                //console.log(i);   // i를 출력하면 5만 출력된다. 클로저 상황이 발생했기 때문.
+            }
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

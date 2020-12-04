@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY6Dq01vAGSL5h4iUfxaK0VylTXC4bgfo&callback=initMap"
+    type="text/javascript"></script>
+
+    <style>
+        #map {
+            height:50%;
+            width:50%;
+            margin:0 auto;
+        }
+        html, body {
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 조끼리 -->
+    <!-- 공공데이터 포털 같은데서 API를 적용할 수 있는 주제 선정 -->
+    <!--
+        fetch를 이용해서 데이터를 받아온 다음에 카카오 API를 사용해서
+        간단하게 하나의 화면에서 데이터 처리
+    -->
+    
+    <select id="paging">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+    </select>
+
+    <div id="map"></div>
+
+    <script>
+        const biLatLng = { lat: "", lng: ""};
+
+        var paging = document.getElementById("paging");
+        paging.addEventListener("change", publicBicycle);
+
+
+        function publicBicycle() {
+            var pageNum = paging.value;
+            var startPage = (pageNum - 1) * 100 + 1;
+            var endPage = pageNum * 100;
+            fetch("http://openapi.seoul.go.kr:8088/53454d69617472693131316a444b4856/json/bikeList/"  + startPage + "/" + endPage + "/")
+            .then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                var mapData = data.rentBikeStatus.row;
+                console.log(mapData);
+
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 10,
+                    center: biLatLng,
+                });
+
+                console.log(mapData.length);
+                for(var i = 0; i < mapData.length; ++i) {
+                    const latLng = {lat: parseFloat(mapData[i].stationLatitude), lng: parseFloat(mapData[i].stationLongitude)};
+                    const marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map,
+                    });
+                }
+
+                
+
+            })
+        }
+
+        function coordsSuccess(position) {
+            console.log(position);
+            biLatLng.lat = position.coords.latitude;
+            biLatLng.lng = position.coords.longitude;
+            console.log("내 현재 위치 :", biLatLng.lat, biLatLng.lng);
+
+            publicBicycle();
+        }
+
+        function coordsFail() {
+            alert("위치 확인 실패");
+        }
+        
+        function initMap() {
+            navigator.geolocation.getCurrentPosition(coordsSuccess, coordsFail);
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

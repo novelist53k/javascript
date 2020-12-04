@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>document 객체의 하위 객체 중 하나로 유일하게 name 속성만으로 접근할 수 있다.</h2>
+
+    <form name="regForm">
+        아이디 : <input type="text" name="id"><br>
+        비밀번호: <input type="password" name="pw"><br>
+        번호 :
+        <select name="phone">
+            <option>선택</option>
+            <option>010</option>
+        </select>
+
+        분야 :
+        <input type="checkbox" name="inter">java
+        <input type="checkbox" name="inter">jsp
+        <input type="checkbox" name="inter">js
+
+        <button type="button" onclick="check()">가입</button>
+    </form>
+
+    <script>
+        // 1. 방법
+        // console.log(document.querySelector("form[name=regForm]"));
+        
+        // 2. document.formName
+        // console.log(document.regForm);
+
+        function check() {
+            if(document.regForm.id.value.length < 4){
+                alert("아이디는 4글자 이상이니라");
+                document.regForm.id.focus();    // 위치에 포커싱
+                return;
+            }
+            else if(document.regForm.phone.value === "선택") {
+                alert("번호를 확인하거라");
+                document.regForm.phone.focus();
+                return;
+            }
+            else{
+                // 체크박스 검사
+                var inter = document.getElementsByName("inter");
+                var boolean = true;
+                for(var i = 0; i < inter.length; ++i){
+                    if(inter[i].checked){
+                        boolean = false;
+                        break;
+                    }
+                }
+                if(boolean){
+                    alert("하나 이상의 분야를 골라야하지 않겠니?");
+                    return;
+                }
+            }
+
+            document.regForm.submit();
+
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

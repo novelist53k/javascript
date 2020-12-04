@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        .tog {margin:0 auto; width:60%;}
+        .tog li {display:inline-block; padding:10px; border:1px solid black; width: 28%; text-align: center;}
+        .tog-menu {display:none;}
+        .active {display:block; animation:myfadein 1s ease-in-out}  /* 호출할 애니메이션, 지속시간, 옵션*/
+
+        /* 애니매이션 생성 */
+        @keyframes myfadein {
+            from{
+                opacity:0;
+            }
+            to {
+                opacity:1;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <section>
+        <ul class="tog">
+            <li data-id="#tog1">메뉴1</li>
+            <li data-id="#tog2">메뉴2</li>
+            <li data-id="#tog3">메뉴3</li>
+        </ul>
+
+        <!-- 메뉴에 따라 보여줄 영역 -->
+        <div>
+            <div id="tog1" class="tog-menu active">토글메뉴1</div>
+            <div id="tog2" class="tog-menu">토글메뉴2</div>
+            <div id="tog3" class="tog-menu">토글메뉴3</div>
+        </div>
+    </section>
+
+    <script>
+        /*
+        이벤트 위임방식을 이용해서 이벤트를 처리한다.
+        data-id값을 얻어서 각 아이디에 적합한 태그 class 이름에 active를 추가해준다.
+        나머지 tog-menu의 active 제거
+        */
+        var tog = document.querySelector(".tog");
+        tog.onclick = function() {
+            if(event.target.tagName !== "LI") return;
+            var id = event.target.dataset.id;
+            
+            var togList = document.querySelectorAll(".tog-menu");
+            for(var i = 0; i < togList.length; ++i){
+                if(togList[i].classList.contains("active")){
+                    togList[i].classList.remove("active");
+                }
+                // if(("#" + togList[i].id) === id) {
+                //     togList[i].className = "tog-menu active";
+                // }
+                // else {
+                //     togList[i].className = "tog-menu";
+                // }
+            }
+
+            document.querySelector(id).classList.add("active");
+        }
+    </script>
+
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>5초 뒤 함수 실행</h2>
+
+    <button type="button" class="stopTime">함수실행스탑!</button>
+
+    <script>
+        // timeout은 일정 시간 후에 함수를 실행시킨다
+        // setTimeout(function(){
+        //     alert("5초 경과");
+        // }, 5000);
+        
+        // var stop = setTimeout(function() {
+        //     alert("5초 경과");
+        // }, 5000);
+
+        // var stopTime = document.querySelector(".stopTime");
+        // stopTime.onclick = function(){
+        //     console.log(1);
+        //     clearTimeout(stop);
+        // };
+
+        // 핸들러 함수에게 매개변수를 전달하려면?
+        var stop = setTimeout(handleTime(5), 5000);
+
+        function handleTime(a){
+
+            // 핸들러 함수
+            return function() {
+                alert("5초 경과, 매개변수는 : " + a);
+            };
+        };
+
+        var stopTime = document.querySelector(".stopTime");
+        stopTime.onclick = function() {
+            clearTimeout(stop);
+        }
+
+    </script>
+    <hr>
+    <h4><a href="script00.html">script00</a></h4>
+</body>
+</html>
